@@ -1,0 +1,50 @@
+# Definindo o dicionário para armazenar os produtos
+inventario = {}
+
+# Função para adicionar um produto ao inventário
+def adicionar_produto(nome, preco, quantidade):
+    inventario[nome] = {'preco': preco, 'quantidade': quantidade}
+    print(f"Produto '{nome}' adicionado com sucesso!")
+
+# Função para remover um produto do inventário
+def remover_produto(nome):
+    if nome in inventario:
+        del inventario[nome]
+        print(f"Produto '{nome}' removido com sucesso!")
+    else:
+        print(f"Produto '{nome}' não encontrado no inventário.")
+
+# Função para listar todos os produtos no inventário
+def listar_produtos():
+    if inventario:
+        print("Inventário de produtos:")
+        for nome, detalhes in inventario.items():
+            print(f"Nome: {nome}, Preço: R${detalhes['preco']}, Quantidade: {detalhes['quantidade']}")
+    else:
+        print("O inventário está vazio.")
+
+# Programa principal
+if __name__ == "__main__":
+    while True:
+        print("\nMenu do Inventário:")
+        print("1. Adicionar produto")
+        print("2. Remover produto")
+        print("3. Listar produtos")
+        print("4. Sair")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == '1':
+            nome = input("Digite o nome do produto: ")
+            preco = float(input("Digite o preço do produto: "))
+            quantidade = int(input("Digite a quantidade do produto: "))
+            adicionar_produto(nome, preco, quantidade)
+        elif opcao == '2':
+            nome = input("Digite o nome do produto a ser removido: ")
+            remover_produto(nome)
+        elif opcao == '3':
+            listar_produtos()
+        elif opcao == '4':
+            print("Saindo do programa...")
+            break
+        else:
+            print("Opção inválida! Tente novamente.")
